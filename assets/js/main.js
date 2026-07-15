@@ -181,32 +181,20 @@ document.querySelectorAll(".reveal");
 
 
 
-function revealOnScroll(){
+function revealOnScroll() {
 
+    console.log("Reveal function running");
 
-    revealElements.forEach(element=>{
+    revealElements.forEach(element => {
 
+        const elementTop = element.getBoundingClientRect().top;
+        console.log(element, elementTop);
 
-        const windowHeight =
-        window.innerHeight;
-
-
-        const elementTop =
-        element.getBoundingClientRect().top;
-
-
-
-        if(elementTop < windowHeight - 100){
-
-
+        if (elementTop < window.innerHeight - 100) {
             element.classList.add("active");
-
-
         }
 
-
     });
-
 
 }
 

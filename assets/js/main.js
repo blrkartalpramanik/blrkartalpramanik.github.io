@@ -461,3 +461,52 @@ images.forEach(img=>{
 
 
 });
+
+/* =====================================================
+ PROJECT MODAL
+===================================================== */
+
+
+const modal =
+document.querySelector(".project-modal");
+
+
+const closeModal =
+document.querySelector(".close-modal");
+
+
+
+document.querySelectorAll(".project-card")
+.forEach(card=>{
+
+
+card.addEventListener("click",()=>{
+
+
+if(modal){
+
+modal.classList.add("active");
+
+}
+
+
+});
+
+
+});
+
+
+
+if(closeModal){
+
+
+closeModal.onclick=()=>{
+
+
+modal.classList.remove("active");
+
+
+};
+
+
+}

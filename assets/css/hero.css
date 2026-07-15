@@ -1,0 +1,576 @@
+/* =====================================================
+   HERO SECTION STYLE
+   Premium Portfolio V2
+===================================================== */
+
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding-top:100px;
+
+}
+
+
+
+/* Background Glow Effects */
+
+.hero::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:500px;
+
+    height:500px;
+
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(0,229,255,.25),
+        transparent 70%
+    );
+
+
+    top:-150px;
+
+    left:-150px;
+
+
+    filter:blur(40px);
+
+
+}
+
+
+
+
+.hero::after{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:500px;
+
+    height:500px;
+
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(124,58,237,.25),
+        transparent 70%
+    );
+
+
+    right:-150px;
+
+
+    bottom:-150px;
+
+
+    filter:blur(40px);
+
+
+}
+
+
+
+
+
+/* Hero Layout */
+
+
+.hero-container{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    1fr 1fr;
+
+
+    align-items:center;
+
+
+    gap:50px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   LEFT CONTENT
+===================================================== */
+
+
+.hero-content{
+
+
+    z-index:2;
+
+
+}
+
+
+
+.hero-subtitle{
+
+
+    color:
+
+    #00e5ff;
+
+
+    font-size:20px;
+
+
+    font-weight:600;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.hero-title{
+
+
+    font-size:
+
+    clamp(45px,6vw,75px);
+
+
+    line-height:1.1;
+
+
+    font-weight:800;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.hero-title span{
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+}
+
+
+
+
+.hero-description{
+
+
+    color:#94a3b8;
+
+
+    font-size:18px;
+
+
+    line-height:1.8;
+
+
+    max-width:550px;
+
+
+    margin-bottom:35px;
+
+
+}
+
+
+
+
+
+/* Buttons */
+
+
+.hero-buttons{
+
+
+    display:flex;
+
+
+    gap:20px;
+
+
+    flex-wrap:wrap;
+
+
+}
+
+
+
+.btn-outline{
+
+
+    padding:14px 35px;
+
+
+    border-radius:50px;
+
+
+    border:
+
+    1px solid #00e5ff;
+
+
+    color:#00e5ff;
+
+
+    font-weight:600;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.btn-outline:hover{
+
+
+    background:#00e5ff;
+
+
+    color:#020617;
+
+
+    transform:
+
+    translateY(-5px);
+
+
+}
+
+
+
+
+
+/* =====================================================
+   HERO IMAGE / CARD
+===================================================== */
+
+
+.hero-image{
+
+
+    position:relative;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+.profile-card{
+
+
+    width:380px;
+
+
+    height:380px;
+
+
+    border-radius:50%;
+
+
+    padding:10px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    animation:
+
+    floating 5s infinite ease-in-out;
+
+
+}
+
+
+
+
+
+.profile-card img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    8px solid #050816;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   FLOATING TECHNOLOGY CARDS
+===================================================== */
+
+
+.tech-card{
+
+
+    position:absolute;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    padding:12px 20px;
+
+
+    border-radius:30px;
+
+
+    color:white;
+
+
+    font-weight:600;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.3);
+
+
+}
+
+
+
+
+
+.tech-card.one{
+
+
+    top:30px;
+
+
+    left:10px;
+
+
+}
+
+
+
+.tech-card.two{
+
+
+    right:0;
+
+
+    top:120px;
+
+
+}
+
+
+
+.tech-card.three{
+
+
+    bottom:40px;
+
+
+    left:40px;
+
+
+}
+
+
+
+
+/* =====================================================
+   SOCIAL ICONS
+===================================================== */
+
+
+.hero-social{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-top:40px;
+
+
+}
+
+
+
+.hero-social a{
+
+
+    width:45px;
+
+
+    height:45px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.hero-social a:hover{
+
+
+    background:#00e5ff;
+
+
+    color:#020617;
+
+
+    transform:
+
+    translateY(-5px);
+
+
+}
+
+
+
+/* =====================================================
+   SCROLL INDICATOR
+===================================================== */
+
+
+.scroll-down{
+
+
+    position:absolute;
+
+
+    bottom:30px;
+
+
+    left:50%;
+
+
+    transform:
+
+    translateX(-50%);
+
+
+    color:#94a3b8;
+
+
+    animation:
+
+    bounce 2s infinite;
+
+
+}

@@ -1,0 +1,425 @@
+/* =====================================================
+   FOOTER SECTION STYLE
+   Premium Portfolio V2
+===================================================== */
+
+
+/* Footer */
+
+.footer{
+
+
+    position:relative;
+
+
+    padding:60px 0 20px;
+
+
+    background:
+
+    rgba(2,6,23,.8);
+
+
+    border-top:
+
+    1px solid rgba(255,255,255,.08);
+
+
+}
+
+
+
+
+
+/* Footer Container */
+
+
+.footer-container{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    2fr 1fr 1fr;
+
+
+    gap:40px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   FOOTER BRAND
+===================================================== */
+
+
+.footer-brand h2{
+
+
+    font-size:32px;
+
+
+    font-weight:800;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.footer-brand h2 span{
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+}
+
+
+
+
+
+.footer-brand p{
+
+
+    color:#94a3b8;
+
+
+    line-height:1.8;
+
+
+    max-width:350px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   FOOTER TITLES
+===================================================== */
+
+
+.footer-box h3{
+
+
+    font-size:20px;
+
+
+    margin-bottom:20px;
+
+
+    position:relative;
+
+
+}
+
+
+
+.footer-box h3::after{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:0;
+
+
+    bottom:-8px;
+
+
+    width:40px;
+
+
+    height:3px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+}
+
+
+
+
+
+/* Footer Links */
+
+
+.footer-links{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:12px;
+
+
+}
+
+
+
+.footer-links a{
+
+
+    color:#94a3b8;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.footer-links a:hover{
+
+
+    color:#00e5ff;
+
+
+    padding-left:8px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   FOOTER SOCIAL ICONS
+===================================================== */
+
+
+.footer-social{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-top:25px;
+
+
+}
+
+
+
+.footer-social a{
+
+
+    width:45px;
+
+
+    height:45px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.12);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.footer-social a:hover{
+
+
+    background:#00e5ff;
+
+
+    color:#020617;
+
+
+    transform:
+
+    translateY(-5px);
+
+
+}
+
+
+
+
+
+/* =====================================================
+   COPYRIGHT
+===================================================== */
+
+
+.footer-bottom{
+
+
+    margin-top:50px;
+
+
+    padding-top:20px;
+
+
+    border-top:
+
+    1px solid rgba(255,255,255,.08);
+
+
+    text-align:center;
+
+
+    color:#64748b;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   BACK TO TOP BUTTON
+===================================================== */
+
+
+.back-top{
+
+
+    position:fixed;
+
+
+    right:30px;
+
+
+    bottom:30px;
+
+
+    width:50px;
+
+
+    height:50px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    color:white;
+
+
+    font-size:20px;
+
+
+    opacity:0;
+
+
+    visibility:hidden;
+
+
+    transition:.3s;
+
+
+    z-index:999;
+
+
+}
+
+
+
+.back-top.show{
+
+
+    opacity:1;
+
+
+    visibility:visible;
+
+
+}
+
+
+
+.back-top:hover{
+
+
+    transform:
+
+    translateY(-5px);
+
+
+}

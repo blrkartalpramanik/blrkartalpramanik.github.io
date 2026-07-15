@@ -1,261 +1,463 @@
-/*=========================================
-    Typed.js
-=========================================*/
-
-const typed = new Typed("#typing", {
-    strings: [
-        "Assistant Consultant",
-        "Full Stack Developer",
-        "Angular Developer",
-        "Spring Boot Developer",
-        "Java Developer",
-        "Node.js Developer"
-    ],
-
-    typeSpeed: 70,
-    backSpeed: 40,
-    backDelay: 1800,
-    loop: true
-});
+/* =====================================================
+   PREMIUM PORTFOLIO V2
+   MAIN JAVASCRIPT
+===================================================== */
 
 
-/*=========================================
-        Swiper Slider
-=========================================*/
 
-const swiper = new Swiper(".mySwiper", {
+/* =====================================================
+   MOBILE NAVBAR TOGGLE
+===================================================== */
 
-    loop: true,
 
-    grabCursor: true,
+const menuToggle = document.querySelector(".menu-toggle");
 
-    centeredSlides: true,
+const navMenu = document.querySelector(".nav-menu");
 
-    autoplay: {
 
-        delay: 3000,
 
-        disableOnInteraction: false
+if(menuToggle){
 
-    },
+    menuToggle.addEventListener("click",()=>{
 
-    pagination: {
 
-        el: ".swiper-pagination",
+        menuToggle.classList.toggle("active");
 
-        clickable: true
 
-    },
+        navMenu.classList.toggle("active");
 
-    navigation: {
 
-        nextEl: ".swiper-button-next",
+    });
 
-        prevEl: ".swiper-button-prev"
+}
 
-    },
 
-    breakpoints: {
 
-        0: {
 
-            slidesPerView: 1
 
-        },
+/* Close Menu After Clicking Link */
 
-        768: {
 
-            slidesPerView: 2
+const navLinks = document.querySelectorAll(".nav-menu a");
 
-        },
 
-        1200: {
+navLinks.forEach(link=>{
 
-            slidesPerView: 3
 
-        }
+    link.addEventListener("click",()=>{
 
-    }
+
+        menuToggle.classList.remove("active");
+
+
+        navMenu.classList.remove("active");
+
+
+    });
+
 
 });
 
 
-/*=========================================
-      Navbar Background on Scroll
-=========================================*/
 
-const navbar = document.querySelector(".custom-navbar");
 
-window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 50) {
 
-        navbar.style.background = "rgba(2,6,23,.95)";
-        navbar.style.padding = "12px 0";
-        navbar.style.boxShadow = "0 10px 35px rgba(0,0,0,.25)";
+
+/* =====================================================
+   STICKY NAVBAR
+===================================================== */
+
+
+const navbar = document.querySelector(".navbar");
+
+
+
+window.addEventListener("scroll",()=>{
+
+
+    if(window.scrollY > 50){
+
+
+        navbar.classList.add("scrolled");
+
 
     }
 
-    else {
+    else{
 
-        navbar.style.background = "rgba(15,23,42,.75)";
-        navbar.style.padding = "18px 0";
-        navbar.style.boxShadow = "none";
+
+        navbar.classList.remove("scrolled");
+
 
     }
+
+
 
 });
 
 
-/*=========================================
-       Active Menu Highlight
-=========================================*/
+
+
+
+
+
+/* =====================================================
+   ACTIVE MENU ON SCROLL
+===================================================== */
+
 
 const sections = document.querySelectorAll("section");
 
-const navLinks = document.querySelectorAll(".nav-link");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    let current = "";
 
-    sections.forEach(section => {
+    let current="";
 
-        const sectionTop = section.offsetTop - 120;
 
-        if (pageYOffset >= sectionTop) {
+    sections.forEach(section=>{
+
+
+        const sectionTop =
+        section.offsetTop - 120;
+
+
+        const sectionHeight =
+        section.clientHeight;
+
+
+
+        if(
+            scrollY >= sectionTop &&
+            scrollY < sectionTop + sectionHeight
+        ){
 
             current = section.getAttribute("id");
 
         }
 
+
     });
 
-    navLinks.forEach(link => {
+
+
+    navLinks.forEach(link=>{
+
 
         link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + current) {
+
+        if(
+            link.getAttribute("href")
+            ==
+            "#" + current
+        ){
 
             link.classList.add("active");
 
         }
 
+
     });
+
+
 
 });
 
 
-/*=========================================
-        Smooth Scroll
-=========================================*/
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    anchor.addEventListener("click", function (e) {
 
-        e.preventDefault();
 
-        const target = document.querySelector(this.getAttribute("href"));
 
-        if (target) {
+/* =====================================================
+   SCROLL REVEAL ANIMATION
+===================================================== */
 
-            window.scrollTo({
 
-                top: target.offsetTop - 70,
+const revealElements =
+document.querySelectorAll(".reveal");
 
-                behavior: "smooth"
 
-            });
+
+function revealOnScroll(){
+
+
+    revealElements.forEach(element=>{
+
+
+        const windowHeight =
+        window.innerHeight;
+
+
+        const elementTop =
+        element.getBoundingClientRect().top;
+
+
+
+        if(elementTop < windowHeight - 100){
+
+
+            element.classList.add("active");
+
 
         }
 
+
     });
 
-});
+
+}
 
 
-/*=========================================
-       Scroll Reveal Animation
-=========================================*/
 
-AOS.init({
-
-    duration: 1000,
-
-    once: true,
-
-    easing: "ease-in-out"
-
-});
+window.addEventListener(
+"scroll",
+revealOnScroll
+);
 
 
-/*=========================================
-     Profile Image Mouse Effect
-=========================================*/
-
-const profile = document.querySelector(".profile-image");
-
-profile.addEventListener("mousemove", (e) => {
-
-    profile.style.transform = "scale(1.03) rotate(2deg)";
-
-});
-
-profile.addEventListener("mouseleave", () => {
-
-    profile.style.transform = "";
-
-});
+revealOnScroll();
 
 
-/*=========================================
-        Scroll To Top Button
-=========================================*/
 
-const topButton = document.createElement("button");
 
-topButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
 
-topButton.className = "scroll-top";
 
-document.body.appendChild(topButton);
 
-window.addEventListener("scroll", () => {
+/* =====================================================
+   BACK TO TOP BUTTON
+===================================================== */
 
-    if (window.scrollY > 400) {
 
-        topButton.classList.add("show");
+const backTop =
+document.querySelector(".back-top");
+
+
+
+if(backTop){
+
+
+window.addEventListener("scroll",()=>{
+
+
+    if(window.scrollY > 500){
+
+
+        backTop.classList.add("show");
+
 
     }
 
-    else {
+    else{
 
-        topButton.classList.remove("show");
+
+        backTop.classList.remove("show");
+
 
     }
 
+
+
 });
 
-topButton.addEventListener("click", () => {
+
+
+backTop.addEventListener("click",()=>{
+
 
     window.scrollTo({
 
-        top: 0,
+        top:0,
 
-        behavior: "smooth"
+        behavior:"smooth"
 
     });
+
 
 });
 
 
-/*=========================================
-       Hero Fade Animation
-=========================================*/
+}
 
-window.addEventListener("load", () => {
 
-    document.querySelector(".hero").classList.add("loaded");
+
+
+
+
+
+/* =====================================================
+   TYPING EFFECT
+===================================================== */
+
+
+const typingText =
+document.querySelector(".typing");
+
+
+
+if(typingText){
+
+
+const words=[
+
+"Full Stack Developer",
+
+"Angular Developer",
+
+"Spring Boot Developer",
+
+"Java Developer",
+
+"Software Engineer"
+
+];
+
+
+
+let wordIndex=0;
+
+let charIndex=0;
+
+let deleting=false;
+
+
+
+function typing(){
+
+
+    const currentWord =
+    words[wordIndex];
+
+
+
+    if(!deleting){
+
+
+        typingText.textContent =
+        currentWord.substring(
+            0,
+            charIndex++
+        );
+
+
+        if(charIndex >
+        currentWord.length){
+
+
+            deleting=true;
+
+
+            setTimeout(
+                typing,
+                1500
+            );
+
+            return;
+
+        }
+
+
+
+    }
+
+    else{
+
+
+        typingText.textContent =
+        currentWord.substring(
+            0,
+            charIndex--
+        );
+
+
+
+        if(charIndex===0){
+
+
+            deleting=false;
+
+
+            wordIndex++;
+
+
+            if(wordIndex >= words.length){
+
+                wordIndex=0;
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+    setTimeout(
+        typing,
+        deleting ? 70 : 120
+    );
+
+}
+
+
+
+typing();
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   CURRENT YEAR FOOTER
+===================================================== */
+
+
+const year =
+document.querySelector("#year");
+
+
+
+if(year){
+
+
+    year.textContent =
+    new Date().getFullYear();
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+   IMAGE LAZY LOAD
+===================================================== */
+
+
+const images =
+document.querySelectorAll("img");
+
+
+
+images.forEach(img=>{
+
+
+    img.setAttribute(
+        "loading",
+        "lazy"
+    );
+
 
 });

@@ -3,646 +3,336 @@
    MAIN JAVASCRIPT
 ===================================================== */
 
+document.addEventListener("DOMContentLoaded", () => {
 
+    /* =====================================================
+       MOBILE NAVBAR
+    ===================================================== */
 
-/* =====================================================
-   MOBILE NAVBAR TOGGLE
-===================================================== */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-menu");
 
+    if (menuToggle && navMenu) {
 
-const menuToggle = document.querySelector(".menu-toggle");
-
-const navMenu = document.querySelector(".nav-menu");
-
-
-
-if(menuToggle){
-
-    menuToggle.addEventListener("click",()=>{
-
-
-        menuToggle.classList.toggle("active");
-
-
-        navMenu.classList.toggle("active");
-
-
-    });
-
-}
-
-
-
-
-
-/* Close Menu After Clicking Link */
-
-
-const navLinks = document.querySelectorAll(".nav-menu a");
-
-
-navLinks.forEach(link=>{
-
-
-    link.addEventListener("click",()=>{
-
-
-        menuToggle.classList.remove("active");
-
-
-        navMenu.classList.remove("active");
-
-
-    });
-
-
-});
-
-
-
-
-
-
-
-/* =====================================================
-   STICKY NAVBAR
-===================================================== */
-
-
-const navbar = document.querySelector(".navbar");
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-    if(window.scrollY > 50){
-
-
-        navbar.classList.add("scrolled");
-
+        menuToggle.addEventListener("click", () => {
+            menuToggle.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
 
     }
 
-    else{
+    const navLinks = document.querySelectorAll(".nav-menu a");
 
+    navLinks.forEach(link => {
 
-        navbar.classList.remove("scrolled");
+        link.addEventListener("click", () => {
 
+            if (menuToggle && navMenu) {
+                menuToggle.classList.remove("active");
+                navMenu.classList.remove("active");
+            }
 
-    }
-
-
-
-});
-
-
-
-
-
-
-
-/* =====================================================
-   ACTIVE MENU ON SCROLL
-===================================================== */
-
-
-const sections = document.querySelectorAll("section");
-
-
-window.addEventListener("scroll",()=>{
-
-
-    let current="";
-
-
-    sections.forEach(section=>{
-
-
-        const sectionTop =
-        section.offsetTop - 120;
-
-
-        const sectionHeight =
-        section.clientHeight;
-
-
-
-        if(
-            scrollY >= sectionTop &&
-            scrollY < sectionTop + sectionHeight
-        ){
-
-            current = section.getAttribute("id");
-
-        }
-
+        });
 
     });
 
+    /* =====================================================
+       STICKY NAVBAR
+    ===================================================== */
 
+    const navbar = document.querySelector(".navbar");
 
-    navLinks.forEach(link=>{
+    window.addEventListener("scroll", () => {
 
+        if (!navbar) return;
 
-        link.classList.remove("active");
-
-
-        if(
-            link.getAttribute("href")
-            ==
-            "#" + current
-        ){
-
-            link.classList.add("active");
-
-        }
-
-
-    });
-
-
-
-});
-
-
-
-
-
-
-
-/* =====================================================
-   SCROLL REVEAL ANIMATION
-===================================================== */
-
-
-const revealElements =
-document.querySelectorAll(".reveal");
-
-
-
-function revealOnScroll() {
-
-    console.log("Reveal function running");
-
-    revealElements.forEach(element => {
-
-        const elementTop = element.getBoundingClientRect().top;
-        console.log(element, elementTop);
-
-        if (elementTop < window.innerHeight - 100) {
-            element.classList.add("active");
+        if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
         }
 
     });
 
-}
+    /* =====================================================
+       ACTIVE MENU
+    ===================================================== */
 
+    const sections = document.querySelectorAll("section");
 
+    function activeMenu() {
 
-window.addEventListener(
-"scroll",
-revealOnScroll
-);
+        let current = "";
 
+        sections.forEach(section => {
 
-revealOnScroll();
+            const sectionTop = section.offsetTop - 120;
+            const sectionHeight = section.offsetHeight;
 
+            if (
+                window.scrollY >= sectionTop &&
+                window.scrollY < sectionTop + sectionHeight
+            ) {
+                current = section.id;
+            }
 
+        });
 
+        navLinks.forEach(link => {
 
+            link.classList.remove("active");
 
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
 
-
-/* =====================================================
-   BACK TO TOP BUTTON
-===================================================== */
-
-
-const backTop =
-document.querySelector(".back-top");
-
-
-
-if(backTop){
-
-
-window.addEventListener("scroll",()=>{
-
-
-    if(window.scrollY > 500){
-
-
-        backTop.classList.add("show");
-
+        });
 
     }
 
-    else{
+    window.addEventListener("scroll", activeMenu);
+    activeMenu();
 
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
 
-        backTop.classList.remove("show");
+    const revealElements = document.querySelectorAll(".reveal");
 
+    function revealOnScroll() {
+
+        revealElements.forEach(el => {
+
+            const elementTop = el.getBoundingClientRect().top;
+
+            if (elementTop < window.innerHeight - 100) {
+                el.classList.add("active");
+            }
+
+        });
 
     }
 
+    window.addEventListener("scroll", revealOnScroll);
 
+    revealOnScroll();
 
-});
+    /* =====================================================
+       BACK TO TOP
+    ===================================================== */
 
+    const backTop = document.querySelector(".back-top");
 
+    if (backTop) {
 
-backTop.addEventListener("click",()=>{
+        window.addEventListener("scroll", () => {
 
+            if (window.scrollY > 500) {
+                backTop.classList.add("show");
+            } else {
+                backTop.classList.remove("show");
+            }
 
-    window.scrollTo({
+        });
 
-        top:0,
+        backTop.addEventListener("click", () => {
 
-        behavior:"smooth"
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
 
-    });
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-/* =====================================================
-   TYPING EFFECT
-===================================================== */
-
-
-const typingText =
-document.querySelector(".typing");
-
-
-
-if(typingText){
-
-
-const words=[
-
-"Assistant Consultant",
-
-"Full Stack Developer",
-
-"Angular Developer",
-
-"Spring Boot Developer",
-
-"Java Developer",
-
-"Microservices Developer",
-
-"REST API Developer"
-
-];
-
-
-
-let wordIndex=0;
-
-let charIndex=0;
-
-let deleting=false;
-
-
-
-function typing(){
-
-
-    const currentWord =
-    words[wordIndex];
-
-
-
-    if(!deleting){
-
-
-        typingText.textContent =
-        currentWord.substring(
-            0,
-            charIndex++
-        );
-
-
-        if(charIndex >
-        currentWord.length){
-
-
-            deleting=true;
-
-
-            setTimeout(
-                typing,
-                1500
-            );
-
-            return;
-
-        }
-
-
+        });
 
     }
 
-    else{
+    /* =====================================================
+       TYPING EFFECT
+    ===================================================== */
 
+    const typingText = document.querySelector(".typing");
 
-        typingText.textContent =
-        currentWord.substring(
-            0,
-            charIndex--
-        );
+    if (typingText) {
 
+        const words = [
+            "Assistant Consultant",
+            "Full Stack Developer",
+            "Angular Developer",
+            "Spring Boot Developer",
+            "Java Developer",
+            "Microservices Developer",
+            "REST API Developer"
+        ];
 
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
 
-        if(charIndex===0){
+        function type() {
 
+            const currentWord = words[wordIndex];
 
-            deleting=false;
+            if (!deleting) {
 
+                typingText.textContent =
+                    currentWord.substring(0, charIndex++);
 
-            wordIndex++;
+                if (charIndex > currentWord.length) {
 
+                    deleting = true;
 
-            if(wordIndex >= words.length){
+                    setTimeout(type, 1500);
 
-                wordIndex=0;
+                    return;
+
+                }
+
+            } else {
+
+                typingText.textContent =
+                    currentWord.substring(0, charIndex--);
+
+                if (charIndex < 0) {
+
+                    deleting = false;
+
+                    charIndex = 0;
+
+                    wordIndex++;
+
+                    if (wordIndex >= words.length) {
+                        wordIndex = 0;
+                    }
+
+                }
 
             }
 
+            setTimeout(type, deleting ? 60 : 120);
 
         }
 
+        type();
 
     }
 
+    /* =====================================================
+       FOOTER YEAR
+    ===================================================== */
 
+    const year = document.getElementById("year");
 
-    setTimeout(
-        typing,
-        deleting ? 70 : 120
-    );
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
 
-}
+    /* =====================================================
+       LAZY LOAD IMAGES
+    ===================================================== */
 
+    document.querySelectorAll("img").forEach(img => {
+        img.loading = "lazy";
+    });
 
+    /* =====================================================
+       PROJECT MODAL
+    ===================================================== */
 
-typing();
+    const modal = document.getElementById("projectModal");
 
+    if (modal) {
 
-}
+        const closeModal = modal.querySelector(".close-modal");
 
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalFeatures = document.getElementById("modalFeatures");
+        const modalTags = document.getElementById("modalTags");
+        const modalGithub = document.getElementById("modalGithub");
+        const modalLive = document.getElementById("modalLive");
 
+        document.querySelectorAll(".project-card").forEach(card => {
 
+            card.addEventListener("click", () => {
 
+                modal.classList.add("active");
 
+                if (modalTitle)
+                    modalTitle.textContent = card.dataset.title || "";
 
+                if (modalDescription)
+                    modalDescription.textContent = card.dataset.description || "";
 
-/* =====================================================
-   CURRENT YEAR FOOTER
-===================================================== */
+                if (modalFeatures) {
 
+                    modalFeatures.innerHTML = "";
 
-const year =
-document.querySelector("#year");
+                    if (card.dataset.features) {
 
+                        card.dataset.features.split("|").forEach(feature => {
 
+                            const li = document.createElement("li");
 
-if(year){
+                            li.textContent = feature;
 
+                            modalFeatures.appendChild(li);
 
-    year.textContent =
-    new Date().getFullYear();
+                        });
 
+                    }
 
-}
+                }
 
+                if (modalTags) {
 
+                    modalTags.innerHTML = "";
 
+                    if (card.dataset.tech) {
 
+                        card.dataset.tech.split("|").forEach(tech => {
 
+                            const span = document.createElement("span");
 
+                            span.textContent = tech;
 
-/* =====================================================
-   IMAGE LAZY LOAD
-===================================================== */
+                            modalTags.appendChild(span);
 
+                        });
 
-const images =
-document.querySelectorAll("img");
+                    }
 
+                }
 
+                if (modalGithub)
+                    modalGithub.href = card.dataset.github || "#";
 
-images.forEach(img=>{
+                if (modalLive)
+                    modalLive.href = card.dataset.live || "#";
 
+            });
 
-    img.setAttribute(
-        "loading",
-        "lazy"
-    );
+        });
 
+        if (closeModal) {
+
+            closeModal.addEventListener("click", () => {
+
+                modal.classList.remove("active");
+
+            });
+
+        }
+
+        modal.addEventListener("click", (e) => {
+
+            if (e.target === modal) {
+
+                modal.classList.remove("active");
+
+            }
+
+        });
+
+    }
 
 });
-
-/* =====================================================
- PROJECT MODAL
-===================================================== */
-
-
-const modal =
-document.querySelector(".project-modal");
-
-
-const closeModal =
-document.querySelector(".close-modal");
-
-
-
-document.querySelectorAll(".project-card")
-.forEach(card=>{
-
-
-card.addEventListener("click",()=>{
-
-
-if(modal){
-
-modal.classList.add("active");
-
-}
-
-
-});
-
-
-});
-
-
-
-if(closeModal){
-
-
-closeModal.onclick=()=>{
-
-
-modal.classList.remove("active");
-
-
-};
-
-
-}
-/* =====================================================
- PROJECT DETAILS MODAL
-===================================================== */
-
-
-const projectCards =
-document.querySelectorAll(".project-card");
-
-
-const modal =
-document.getElementById("projectModal");
-
-
-const closeModal =
-document.querySelector(".close-modal");
-
-
-
-const modalTitle =
-document.getElementById("modalTitle");
-
-
-const modalDescription =
-document.getElementById("modalDescription");
-
-
-const modalFeatures =
-document.getElementById("modalFeatures");
-
-
-const modalTags =
-document.getElementById("modalTags");
-
-
-const modalGithub =
-document.getElementById("modalGithub");
-
-
-const modalLive =
-document.getElementById("modalLive");
-
-
-
-
-
-projectCards.forEach(card=>{
-
-
-card.addEventListener("click",()=>{
-
-
-modal.classList.add("active");
-
-
-
-modalTitle.textContent =
-card.dataset.title;
-
-
-
-modalDescription.textContent =
-card.dataset.description;
-
-
-
-modalFeatures.innerHTML="";
-
-
-card.dataset.features
-.split("|")
-.forEach(feature=>{
-
-
-let li=document.createElement("li");
-
-li.textContent=feature;
-
-modalFeatures.appendChild(li);
-
-
-});
-
-
-
-
-modalTags.innerHTML="";
-
-
-card.dataset.tech
-.split("|")
-.forEach(item=>{
-
-
-let span=document.createElement("span");
-
-span.textContent=item;
-
-modalTags.appendChild(span);
-
-
-});
-
-
-
-modalGithub.href =
-card.dataset.github;
-
-
-modalLive.href =
-card.dataset.live;
-
-
-
-});
-
-
-});
-
-
-
-
-
-closeModal.onclick=()=>{
-
-
-modal.classList.remove("active");
-
-
-};
-
-
-
-
-modal.onclick=(e)=>{
-
-
-if(e.target===modal){
-
-modal.classList.remove("active");
-
-}
-
-
-};

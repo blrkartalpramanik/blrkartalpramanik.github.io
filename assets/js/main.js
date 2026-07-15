@@ -510,3 +510,147 @@ modal.classList.remove("active");
 
 
 }
+/* =====================================================
+ PROJECT DETAILS MODAL
+===================================================== */
+
+
+const projectCards =
+document.querySelectorAll(".project-card");
+
+
+const modal =
+document.getElementById("projectModal");
+
+
+const closeModal =
+document.querySelector(".close-modal");
+
+
+
+const modalTitle =
+document.getElementById("modalTitle");
+
+
+const modalDescription =
+document.getElementById("modalDescription");
+
+
+const modalFeatures =
+document.getElementById("modalFeatures");
+
+
+const modalTags =
+document.getElementById("modalTags");
+
+
+const modalGithub =
+document.getElementById("modalGithub");
+
+
+const modalLive =
+document.getElementById("modalLive");
+
+
+
+
+
+projectCards.forEach(card=>{
+
+
+card.addEventListener("click",()=>{
+
+
+modal.classList.add("active");
+
+
+
+modalTitle.textContent =
+card.dataset.title;
+
+
+
+modalDescription.textContent =
+card.dataset.description;
+
+
+
+modalFeatures.innerHTML="";
+
+
+card.dataset.features
+.split("|")
+.forEach(feature=>{
+
+
+let li=document.createElement("li");
+
+li.textContent=feature;
+
+modalFeatures.appendChild(li);
+
+
+});
+
+
+
+
+modalTags.innerHTML="";
+
+
+card.dataset.tech
+.split("|")
+.forEach(item=>{
+
+
+let span=document.createElement("span");
+
+span.textContent=item;
+
+modalTags.appendChild(span);
+
+
+});
+
+
+
+modalGithub.href =
+card.dataset.github;
+
+
+modalLive.href =
+card.dataset.live;
+
+
+
+});
+
+
+});
+
+
+
+
+
+closeModal.onclick=()=>{
+
+
+modal.classList.remove("active");
+
+
+};
+
+
+
+
+modal.onclick=(e)=>{
+
+
+if(e.target===modal){
+
+modal.classList.remove("active");
+
+}
+
+
+};

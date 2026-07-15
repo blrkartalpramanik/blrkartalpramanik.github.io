@@ -589,3 +589,26 @@
     left:-20px;
 
 }
+.hero-stats{
+
+    display:flex;
+
+    gap:40px;
+
+    margin-top:40px;
+
+}
+
+.hero-stats h3{
+
+    font-size:34px;
+
+    color:#00e5ff;
+
+}
+
+.hero-stats span{
+
+    color:#94a3b8;
+
+}

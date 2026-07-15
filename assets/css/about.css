@@ -1,0 +1,407 @@
+/* =====================================================
+   ABOUT SECTION STYLE
+   Premium Portfolio V2
+===================================================== */
+
+
+.about{
+
+    position:relative;
+
+}
+
+
+
+/* About Layout */
+
+
+.about-container{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    1fr 1fr;
+
+
+    gap:60px;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   ABOUT IMAGE CARD
+===================================================== */
+
+
+.about-image{
+
+
+    position:relative;
+
+
+}
+
+
+
+.about-card{
+
+
+    background:
+
+    rgba(255,255,255,.06);
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.12);
+
+
+    padding:30px;
+
+
+    border-radius:
+
+    var(--radius);
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
+}
+
+
+
+
+
+.about-card img{
+
+
+    width:100%;
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+/* Experience Badge */
+
+
+.experience-box{
+
+
+    position:absolute;
+
+
+    bottom:-30px;
+
+
+    right:-20px;
+
+
+    width:160px;
+
+
+    height:160px;
+
+
+    border-radius:50%;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    color:white;
+
+
+    box-shadow:
+
+    0 20px 40px rgba(0,229,255,.3);
+
+
+}
+
+
+
+.experience-box h2{
+
+
+    font-size:42px;
+
+
+    font-weight:800;
+
+
+}
+
+
+
+.experience-box span{
+
+
+    font-size:14px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   ABOUT CONTENT
+===================================================== */
+
+
+.about-content h3{
+
+
+    font-size:34px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.about-content h3 span{
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+}
+
+
+
+.about-content p{
+
+
+    color:
+
+    var(--muted-color);
+
+
+    line-height:1.8;
+
+
+    font-size:17px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   ABOUT INFO GRID
+===================================================== */
+
+
+.about-info{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+
+    gap:20px;
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+
+.info-box{
+
+
+    padding:20px;
+
+
+    border-radius:15px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.info-box:hover{
+
+
+    transform:
+
+    translateY(-8px);
+
+
+    border-color:#00e5ff;
+
+
+}
+
+
+
+.info-box h4{
+
+
+    font-size:25px;
+
+
+    color:#00e5ff;
+
+
+    margin-bottom:5px;
+
+
+}
+
+
+
+.info-box p{
+
+
+    margin:0;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   ABOUT TAGS
+===================================================== */
+
+
+.about-tags{
+
+
+    display:flex;
+
+
+    flex-wrap:wrap;
+
+
+    gap:12px;
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+.about-tags span{
+
+
+    padding:8px 18px;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(0,229,255,.1);
+
+
+    color:#00e5ff;
+
+
+    border:
+
+    1px solid rgba(0,229,255,.25);
+
+
+    font-size:14px;
+
+
+    font-weight:600;
+
+
+}

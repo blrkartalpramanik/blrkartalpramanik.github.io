@@ -1,0 +1,26 @@
+.header{
+    background:#ffffff;
+    padding:15px 30px;
+    border-bottom:1px solid #e5e5e5;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-area img{
+    width:480px;
+}
+
+.logo-area h1{
+    color:#222;
+    font-size:28px;
+    margin:0;
+}
+
+.logo-area p{
+    color:#666;
+    margin-top:4px;
+}

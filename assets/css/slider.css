@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 450px;
+    background: #edf3f7;
+    /* border-radius: 20px; */
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Left & Right Slider */
+.slider-container {
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    width: 100%;
+    height: 450px;
+    position: relative;
+}
+
+.slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.slider img.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slider img.prev {
+    opacity: 1;
+    transform: translateX(-100%);
+}
+
+/* Middle Section */
+.middle-cards {
+    width: 40%;
+    background: #edf3f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    gap: 15px;
+}
+
+.school-card {
+    background: #fff;
+    border-left: 5px solid #0056b3;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.school-card:hover {
+    transform: translateX(8px);
+}
+
+.school-card h4 {
+    font-size: 17px;
+    color: #003366;
+    font-weight: 600;
+}
+
+/* Navigation */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    cursor: pointer;
+    z-index: 100;
+    font-size: 22px;
+    transition: .3s;
+}
+
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}

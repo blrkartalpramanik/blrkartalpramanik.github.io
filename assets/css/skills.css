@@ -1,0 +1,383 @@
+/* =====================================================
+   SKILLS SECTION STYLE
+   Premium Portfolio V2
+===================================================== */
+
+
+/* Skills Container */
+
+.skills-container{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+
+
+/* =====================================================
+   SKILL CATEGORY CARD
+===================================================== */
+
+
+.skill-box{
+
+
+    background:
+
+    rgba(255,255,255,.06);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.12);
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+    padding:35px;
+
+
+    border-radius:
+
+    var(--radius);
+
+
+    transition:
+
+    .35s;
+
+
+}
+
+
+
+.skill-box:hover{
+
+
+    transform:
+
+    translateY(-10px);
+
+
+    border-color:
+
+    #00e5ff;
+
+
+    box-shadow:
+
+    0 20px 40px rgba(0,0,0,.3);
+
+
+}
+
+
+
+
+
+.skill-box h3{
+
+
+    font-size:26px;
+
+
+    margin-bottom:25px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+}
+
+
+
+.skill-box h3 i{
+
+
+    color:#00e5ff;
+
+
+}
+
+
+
+
+
+/* =====================================================
+   SKILL ITEM
+===================================================== */
+
+
+.skill-item{
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+.skill-header{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    margin-bottom:10px;
+
+
+    font-size:15px;
+
+
+    color:#e2e8f0;
+
+
+}
+
+
+
+
+
+/* Progress Background */
+
+
+.progress-bar{
+
+
+    height:10px;
+
+
+    width:100%;
+
+
+    background:
+
+    rgba(255,255,255,.12);
+
+
+    border-radius:20px;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+
+/* Progress Fill */
+
+
+.progress{
+
+
+    height:100%;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3aed
+    );
+
+
+    animation:
+
+    progressAnimation 2s ease;
+
+
+}
+
+
+
+
+
+/* Skill Percentage */
+
+
+.percent{
+
+
+    color:#00e5ff;
+
+
+    font-weight:600;
+
+
+}
+
+
+
+
+
+
+/* =====================================================
+   TECHNOLOGY TAGS
+===================================================== */
+
+
+.tech-list{
+
+
+    display:flex;
+
+
+    flex-wrap:wrap;
+
+
+    gap:12px;
+
+
+    margin-top:30px;
+
+
+}
+
+
+
+
+.tech-list span{
+
+
+    padding:
+
+    10px 18px;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    color:#cbd5e1;
+
+
+    font-size:14px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+
+.tech-list span:hover{
+
+
+    background:#00e5ff;
+
+
+    color:#020617;
+
+
+    transform:
+
+    translateY(-5px);
+
+
+}
+
+
+
+
+
+/* =====================================================
+   SPECIAL SKILL HIGHLIGHT
+===================================================== */
+
+
+.skill-highlight{
+
+
+    margin-top:40px;
+
+
+    padding:25px;
+
+
+    text-align:center;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        rgba(0,229,255,.15),
+        rgba(124,58,237,.15)
+    );
+
+
+    border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+}
+
+
+
+.skill-highlight h4{
+
+
+    font-size:22px;
+
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+.skill-highlight p{
+
+
+    color:#94a3b8;
+
+
+    line-height:1.7;
+
+
+}

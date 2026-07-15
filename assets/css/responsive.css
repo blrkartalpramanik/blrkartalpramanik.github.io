@@ -1,0 +1,691 @@
+/* =====================================================
+   RESPONSIVE DESIGN
+   Premium Portfolio V2
+===================================================== */
+
+
+/* =====================================================
+   LARGE TABLETS / SMALL LAPTOP
+===================================================== */
+
+
+@media(max-width:1100px){
+
+
+    .hero-container{
+
+        gap:30px;
+
+    }
+
+
+
+    .skills-container{
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+
+
+
+    .projects-container{
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+
+
+
+    .footer-container{
+
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+
+}
+
+
+
+
+
+/* =====================================================
+   TABLETS
+===================================================== */
+
+
+@media(max-width:900px){
+
+
+
+    section{
+
+        padding:80px 0;
+
+    }
+
+
+
+
+
+    .section-title{
+
+
+        font-size:36px;
+
+
+    }
+
+
+
+
+
+    /* Navbar */
+
+
+    .menu-toggle{
+
+
+        display:flex;
+
+
+    }
+
+
+
+    .nav-menu{
+
+
+        position:absolute;
+
+
+        top:80px;
+
+
+        left:0;
+
+
+        width:100%;
+
+
+        background:
+
+        rgba(2,6,23,.95);
+
+
+        flex-direction:column;
+
+
+        padding:30px;
+
+
+        gap:25px;
+
+
+        transform:
+
+        translateY(-120%);
+
+
+        transition:.4s;
+
+
+    }
+
+
+
+
+    .nav-menu.active{
+
+
+        transform:
+
+        translateY(0);
+
+
+    }
+
+
+
+
+    /* Hero */
+
+
+    .hero-container{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+        text-align:center;
+
+
+    }
+
+
+
+    .hero-description{
+
+
+        margin:auto;
+
+        margin-bottom:30px;
+
+    }
+
+
+
+
+
+    .hero-buttons{
+
+
+        justify-content:center;
+
+
+    }
+
+
+
+
+
+    .hero-social{
+
+
+        justify-content:center;
+
+
+    }
+
+
+
+
+    .profile-card{
+
+
+        width:320px;
+
+        height:320px;
+
+
+    }
+
+
+
+
+
+    /* About */
+
+
+    .about-container{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+    .about-image{
+
+
+        max-width:450px;
+
+
+        margin:auto;
+
+
+    }
+
+
+
+
+
+    /* Skills */
+
+
+    .skills-container{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    /* Contact */
+
+
+    .contact-container{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+    /* Footer */
+
+
+    .footer-container{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+        text-align:center;
+
+
+    }
+
+
+
+
+    .footer-social{
+
+
+        justify-content:center;
+
+
+    }
+
+
+}
+
+
+
+
+
+/* =====================================================
+   MOBILE DEVICES
+===================================================== */
+
+
+@media(max-width:600px){
+
+
+
+    .container{
+
+
+        width:92%;
+
+
+    }
+
+
+
+
+
+    .navbar .container{
+
+
+        height:70px;
+
+
+    }
+
+
+
+
+    .logo{
+
+
+        font-size:24px;
+
+
+    }
+
+
+
+
+
+    .hero{
+
+
+        padding-top:90px;
+
+
+    }
+
+
+
+
+    .hero-title{
+
+
+        font-size:42px;
+
+
+    }
+
+
+
+
+    .hero-subtitle{
+
+
+        font-size:17px;
+
+
+    }
+
+
+
+
+
+    .hero-description{
+
+
+        font-size:15px;
+
+
+    }
+
+
+
+
+    .profile-card{
+
+
+        width:260px;
+
+
+        height:260px;
+
+
+    }
+
+
+
+
+
+    .tech-card{
+
+
+        font-size:12px;
+
+
+        padding:8px 14px;
+
+
+    }
+
+
+
+
+
+    .about-content h3{
+
+
+        font-size:28px;
+
+
+    }
+
+
+
+
+
+    .about-info{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    .experience-box{
+
+
+        width:120px;
+
+
+        height:120px;
+
+
+        right:0;
+
+
+    }
+
+
+
+
+
+    .experience-box h2{
+
+
+        font-size:30px;
+
+
+    }
+
+
+
+
+
+    .projects-container{
+
+
+        grid-template-columns:
+
+        1fr;
+
+
+    }
+
+
+
+
+
+    .project-card.featured{
+
+
+        grid-column:
+
+        span 1;
+
+
+    }
+
+
+
+
+
+    /* Timeline Mobile */
+
+
+    .timeline::before{
+
+
+        left:20px;
+
+
+    }
+
+
+
+
+
+    .timeline-item,
+
+
+    .timeline-item:nth-child(even),
+
+
+    .timeline-item:nth-child(odd){
+
+
+        width:100%;
+
+
+        left:0;
+
+
+        padding-left:60px;
+
+
+        padding-right:0;
+
+
+        text-align:left;
+
+
+    }
+
+
+
+
+    .timeline-item::before,
+
+
+    .timeline-item:nth-child(even)::before,
+
+
+    .timeline-item:nth-child(odd)::before{
+
+
+        left:11px;
+
+
+        right:auto;
+
+
+    }
+
+
+
+
+
+    .contact-form{
+
+
+        padding:25px;
+
+
+    }
+
+
+
+
+
+    .section-title{
+
+
+        font-size:32px;
+
+
+    }
+
+
+
+
+
+    .back-top{
+
+
+        width:45px;
+
+
+        height:45px;
+
+
+        right:20px;
+
+
+        bottom:20px;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+/* =====================================================
+   EXTRA SMALL DEVICES
+===================================================== */
+
+
+@media(max-width:400px){
+
+
+
+    .hero-title{
+
+
+        font-size:36px;
+
+
+    }
+
+
+
+
+    .profile-card{
+
+
+        width:220px;
+
+
+        height:220px;
+
+
+    }
+
+
+
+
+    .btn,
+
+
+    .btn-outline{
+
+
+        width:100%;
+
+
+    }
+
+
+
+}

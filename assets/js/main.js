@@ -302,6 +302,8 @@ if(typingText){
 
 const words=[
 
+"Assistant Consultant",
+
 "Full Stack Developer",
 
 "Angular Developer",
@@ -310,7 +312,9 @@ const words=[
 
 "Java Developer",
 
-"Software Engineer"
+"Microservices Developer",
+
+"REST API Developer"
 
 ];
 

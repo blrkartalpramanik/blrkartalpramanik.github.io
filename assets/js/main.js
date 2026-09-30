@@ -1,338 +1,89 @@
-/* =====================================================
-   PREMIUM PORTFOLIO V2
-   MAIN JAVASCRIPT
-===================================================== */
+(function () {
+  var GH = "https://github.com/blrkartalpramanik";
+  var projects = [
+    { img: "project-1", title: "Client Management System",
+      desc: "Full-stack platform for client profiles, meeting scheduling with Zoom integration, and documented REST APIs.",
+      features: ["Client profile management", "Meeting scheduling and Zoom integration", "REST APIs documented with Swagger", "MySQL database"],
+      tech: ["Angular", "Express.js", "MySQL", "Swagger"], code: GH + "/Client-Management-system" },
+    { img: "project-5", title: "Medicine Management System",
+      desc: "Angular and Spring Boot application for managing medicine stock, with JWT login, a cart and image upload.",
+      features: ["JWT secure login", "Medicine inventory and cart", "Image upload", "Secured REST APIs"],
+      tech: ["Angular", "Spring Boot", "JWT", "MySQL"], code: GH },
+    { img: "project-2", title: "Zumba Gym Management",
+      desc: "Gym management system for members, class batches and registrations, backed by a relational database.",
+      features: ["Member and batch management", "Class registration", "Class scheduler", "Database operations"],
+      tech: ["Java", "JSP", "MySQL", "Hibernate"], code: GH },
+    { img: "project-4", title: "Travel Booking System",
+      desc: "Travel and cab booking web app with separate user and admin flows and OpenStreetMap integration.",
+      features: ["Register, login and book rides", "Track booking status", "Admin confirms or cancels bookings", "OpenStreetMap integration"],
+      tech: ["JSP", "Java", "MySQL", "OpenStreetMap"], code: GH + "/Travel-Booking-System" },
+    { img: "project-3", title: "Express Banking System",
+      desc: "RESTful banking API built with Node.js and Express, tested with Postman. A good reference for backend and API design.",
+      features: ["Create account", "Transfer money", "Check balances", "View transaction history"],
+      tech: ["Node.js", "Express.js", "REST API", "Postman"], code: GH + "/Express-Banking-System" },
+    { img: "project-6", title: "Microservices Gateway System",
+      desc: "Microservices architecture with Spring Cloud Gateway for routing, secured service calls and Docker deployment.",
+      features: ["API routing through Spring Cloud Gateway", "JWT-based security", "Service-to-service communication", "Docker deployment"],
+      tech: ["Spring Cloud", "Microservices", "Docker", "Kafka"], code: GH }
+  ];
 
-document.addEventListener("DOMContentLoaded", () => {
+  var $ = function (s) { return document.querySelector(s); };
+  var chips = function (a) { return a.map(function (t) { return "<span>" + t + "</span>"; }).join(""); };
 
-    /* =====================================================
-       MOBILE NAVBAR
-    ===================================================== */
+  var grid = $("#pgrid");
+  projects.forEach(function (p, i) {
+    var c = document.createElement("article");
+    c.className = "pc rv";
+    c.innerHTML =
+      '<img src="assets/images/' + p.img + '.webp" alt="' + p.title + ' overview" loading="lazy" width="960" height="524" data-i="' + i + '">' +
+      '<div class="pb"><h3>' + p.title + "</h3><p>" + p.desc + '</p><div class="chips">' + chips(p.tech) + "</div>" +
+      '<div class="pl"><button data-i="' + i + '"><i class="fa-solid fa-circle-info"></i>Details</button>' +
+      '<a href="' + p.code + '" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i>Code</a></div></div>';
+    grid.appendChild(c);
+  });
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".nav-menu");
+  var modal = $("#modal"), lastFocus;
+  function open(i) {
+    var p = projects[i]; lastFocus = document.activeElement;
+    $("#mi").src = "assets/images/" + p.img + ".webp"; $("#mi").alt = p.title;
+    $("#mt").textContent = p.title; $("#md").textContent = p.desc;
+    $("#mf").innerHTML = p.features.map(function (f) { return "<li>" + f + "</li>"; }).join("");
+    $("#mtags").innerHTML = chips(p.tech); $("#mg").href = p.code;
+    modal.classList.add("on"); $(".x").focus();
+  }
+  function close() { modal.classList.remove("on"); if (lastFocus) lastFocus.focus(); }
+  grid.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-i]"); if (t) open(+t.dataset.i);
+  });
+  $(".x").addEventListener("click", close);
+  modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
 
-    if (menuToggle && navMenu) {
+  var burger = $(".burger"), links = $(".links");
+  burger.addEventListener("click", function () {
+    var on = links.classList.toggle("on"); burger.setAttribute("aria-expanded", on);
+  });
+  links.addEventListener("click", function (e) { if (e.target.tagName === "A") links.classList.remove("on"); });
 
-        menuToggle.addEventListener("click", () => {
-            menuToggle.classList.toggle("active");
-            navMenu.classList.toggle("active");
-        });
+  var header = $("header"), top = $(".top");
+  window.addEventListener("scroll", function () {
+    header.classList.toggle("s", scrollY > 30); top.classList.toggle("on", scrollY > 600);
+  }, { passive: true });
+  top.addEventListener("click", function () { scrollTo({ top: 0, behavior: "smooth" }); });
 
-    }
-
-    const navLinks = document.querySelectorAll(".nav-menu a");
-
-    navLinks.forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            if (menuToggle && navMenu) {
-                menuToggle.classList.remove("active");
-                navMenu.classList.remove("active");
-            }
-
-        });
-
+  var navA = document.querySelectorAll(".links a:not(.btn)");
+  var secs = [].map.call(navA, function (a) { return $(a.getAttribute("href")); });
+  var spy = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting) navA.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id); });
     });
-
-    /* =====================================================
-       STICKY NAVBAR
-    ===================================================== */
-
-    const navbar = document.querySelector(".navbar");
-
-    window.addEventListener("scroll", () => {
-
-        if (!navbar) return;
-
-        if (window.scrollY > 50) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-
-    });
-
-    /* =====================================================
-       ACTIVE MENU
-    ===================================================== */
-
-    const sections = document.querySelectorAll("section");
-
-    function activeMenu() {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const sectionTop = section.offsetTop - 120;
-            const sectionHeight = section.offsetHeight;
-
-            if (
-                window.scrollY >= sectionTop &&
-                window.scrollY < sectionTop + sectionHeight
-            ) {
-                current = section.id;
-            }
-
-        });
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            if (link.getAttribute("href") === "#" + current) {
-                link.classList.add("active");
-            }
-
-        });
-
-    }
-
-    window.addEventListener("scroll", activeMenu);
-    activeMenu();
-
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    function revealOnScroll() {
-
-        revealElements.forEach(el => {
-
-            const elementTop = el.getBoundingClientRect().top;
-
-            if (elementTop < window.innerHeight - 100) {
-                el.classList.add("active");
-            }
-
-        });
-
-    }
-
-    window.addEventListener("scroll", revealOnScroll);
-
-    revealOnScroll();
-
-    /* =====================================================
-       BACK TO TOP
-    ===================================================== */
-
-    const backTop = document.querySelector(".back-top");
-
-    if (backTop) {
-
-        window.addEventListener("scroll", () => {
-
-            if (window.scrollY > 500) {
-                backTop.classList.add("show");
-            } else {
-                backTop.classList.remove("show");
-            }
-
-        });
-
-        backTop.addEventListener("click", () => {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        });
-
-    }
-
-    /* =====================================================
-       TYPING EFFECT
-    ===================================================== */
-
-    const typingText = document.querySelector(".typing");
-
-    if (typingText) {
-
-        const words = [
-            "Assistant Consultant",
-            "Full Stack Developer",
-            "Angular Developer",
-            "Spring Boot Developer",
-            "Java Developer",
-            "Microservices Developer",
-            "REST API Developer"
-        ];
-
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
-
-        function type() {
-
-            const currentWord = words[wordIndex];
-
-            if (!deleting) {
-
-                typingText.textContent =
-                    currentWord.substring(0, charIndex++);
-
-                if (charIndex > currentWord.length) {
-
-                    deleting = true;
-
-                    setTimeout(type, 1500);
-
-                    return;
-
-                }
-
-            } else {
-
-                typingText.textContent =
-                    currentWord.substring(0, charIndex--);
-
-                if (charIndex < 0) {
-
-                    deleting = false;
-
-                    charIndex = 0;
-
-                    wordIndex++;
-
-                    if (wordIndex >= words.length) {
-                        wordIndex = 0;
-                    }
-
-                }
-
-            }
-
-            setTimeout(type, deleting ? 60 : 120);
-
-        }
-
-        type();
-
-    }
-
-    /* =====================================================
-       FOOTER YEAR
-    ===================================================== */
-
-    const year = document.getElementById("year");
-
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
-
-    /* =====================================================
-       LAZY LOAD IMAGES
-    ===================================================== */
-
-    document.querySelectorAll("img").forEach(img => {
-        img.loading = "lazy";
-    });
-
-    /* =====================================================
-       PROJECT MODAL
-    ===================================================== */
-
-    const modal = document.getElementById("projectModal");
-
-    if (modal) {
-
-        const closeModal = modal.querySelector(".close-modal");
-
-        const modalTitle = document.getElementById("modalTitle");
-        const modalDescription = document.getElementById("modalDescription");
-        const modalFeatures = document.getElementById("modalFeatures");
-        const modalTags = document.getElementById("modalTags");
-        const modalGithub = document.getElementById("modalGithub");
-        const modalLive = document.getElementById("modalLive");
-
-        document.querySelectorAll(".project-card").forEach(card => {
-
-            card.addEventListener("click", () => {
-
-                modal.classList.add("active");
-
-                if (modalTitle)
-                    modalTitle.textContent = card.dataset.title || "";
-
-                if (modalDescription)
-                    modalDescription.textContent = card.dataset.description || "";
-
-                if (modalFeatures) {
-
-                    modalFeatures.innerHTML = "";
-
-                    if (card.dataset.features) {
-
-                        card.dataset.features.split("|").forEach(feature => {
-
-                            const li = document.createElement("li");
-
-                            li.textContent = feature;
-
-                            modalFeatures.appendChild(li);
-
-                        });
-
-                    }
-
-                }
-
-                if (modalTags) {
-
-                    modalTags.innerHTML = "";
-
-                    if (card.dataset.tech) {
-
-                        card.dataset.tech.split("|").forEach(tech => {
-
-                            const span = document.createElement("span");
-
-                            span.textContent = tech;
-
-                            modalTags.appendChild(span);
-
-                        });
-
-                    }
-
-                }
-
-                if (modalGithub)
-                    modalGithub.href = card.dataset.github || "#";
-
-                if (modalLive)
-                    modalLive.href = card.dataset.live || "#";
-
-            });
-
-        });
-
-        if (closeModal) {
-
-            closeModal.addEventListener("click", () => {
-
-                modal.classList.remove("active");
-
-            });
-
-        }
-
-        modal.addEventListener("click", (e) => {
-
-            if (e.target === modal) {
-
-                modal.classList.remove("active");
-
-            }
-
-        });
-
-    }
-
-});
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  secs.forEach(function (s) { if (s) spy.observe(s); });
+
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
+
+  $("#yr").textContent = new Date().getFullYear();
+})();
